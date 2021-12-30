@@ -1,83 +1,9 @@
-/* 
-
-.app-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #222;
+app-login-header {
+  flex: 0 0 100%;
+  margin: 0;
 }
 
-.app-header {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #222;
+app-root {
+  flex: 1 1 100%;
+  margin: 0;
 }
-
-.app-header .title {
-  color: #fff;
-  font-size: 2em;
-}
-
-.app-header .subtitle {
-  color: #fff;
-  font-size: 1em;
-}
-
-.app-content {
-  width: 100%;
-  height: calc(100% - 100px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #222;
-}
-
-.app-content .title {
-  color: #fff;
-  font-size: 2em;
-}
-
-.app-content .subtitle {
-  color: #fff;
-  font-size: 1em;
-}
-
-.app-footer {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #222;
-}
-
-.app-footer .title {
-  color: #fff;
-  font-size: 2em;
-}
-
-.app-footer .subtitle {
-  color: #fff;
-  font-size: 1em;
-}
-
-.app-footer .link {
-  color: #fff;
-  font-size: 1em;
-}
-
-.app-footer .link:hover {
-  text-decoration: underline;
-}
-
-.app-footer .link:active {
-  text-decoration: none;
-}
- */
