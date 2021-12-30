@@ -1,5 +1,7 @@
 # SoftwareDevAsAService
-This project is a quick and dirty amalgamation to get up to speed with the following technologies: Angular, OAuth, Cloudflare workers managed by serverless.com YAML config, and CI/CD with github actions
+This project is a quick and dirty amalgamation to get up to speed with the following technologies: Angular, OAuth, Cloudflare workers managed by serverless.com YAML config, and github actions.
+
+Github actions will be used for populating the secret keys for the cloudflare serverless functions.
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
@@ -21,6 +23,8 @@ It should contain your Auth0 client id and domain:
 }
 ```
 
+These credentials can be found in the Auth0 dashboard: https://manage.auth0.com/#/clients
+
 
 
 
@@ -33,3 +37,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 * Show the serverless function options on the angular service page (only if logged in)
 * Using OAuth access-token, call cloudflare serverless function
 * Use RXJs to listen for response from serverless function and update page accordingly
+* strech goal: prettify the look of the site
