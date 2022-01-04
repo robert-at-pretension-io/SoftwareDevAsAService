@@ -9,12 +9,69 @@
 
   Each of the pages is accessible by clicking on the corresponding button on the home page. All of the pages are separate angular components. The home page is the root component.
 -->
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a routerLink="/" class="icon is-large has-text-info">
+      <i class="fas fa-2x fa-code-branch"></i>
+    </a>
+  </div>
 
   <div class="navbar-end">
+    <div class="navbar-item">
+      <button
+        class="button is-primary is-fullwidth"
+        routerLink="/home"
+        [ngClass]="{
+          'is-selected': router.url === '/home'
+        }"
+      >
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+          <span> Home </span>
+        </span>
+      </button>
+    </div>
+    <div class="navbar-item">
+      <button
+        class="button is-info is-fullwidth"
+        routerLink="/services"
+        [disabled]="(auth.isAuthenticated$ | async) === false"
+        [ngClass]="{
+          'is-selected': router.url === '/services'
+        }"
+      >
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-cogs"></i>
+          </span>
+          <span>Services</span>
+        </span>
+      </button>
+    </div>
+    <div class="navbar-item">
+      <button
+        class="button is-fullwidth"
+        routerLink="/account"
+        [disabled]="(auth.isAuthenticated$ | async) === false"
+        [ngClass]="{
+          'is-success': (auth.isAuthenticated$ | async),
+          'is-selected': router.url === '/account'
+        }"
+      >
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-user"></i>
+          </span>
+          <span>Account</span>
+        </span>
+      </button>
+    </div>
+
+
     <app-login-header></app-login-header>
   </div>
-  </nav>
-
+</nav>
 
 <router-outlet> </router-outlet>

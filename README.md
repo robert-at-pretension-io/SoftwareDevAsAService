@@ -36,5 +36,3 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 * Setup Serverless library configuration YAML file for cloudflare workers: *in progress*
 * Show the serverless function options on the angular service page (only if logged in)
 * Using OAuth access-token, call cloudflare serverless function
-* Use RXJs to listen for response from serverless function and update page accordingly
-* strech goal: prettify the look of the site

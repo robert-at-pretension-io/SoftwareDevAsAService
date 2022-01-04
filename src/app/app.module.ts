@@ -8,12 +8,17 @@ import { ServicesPageComponent } from './services-page/services-page.component';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/environment';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AccountPageComponent } from './account-page/account-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginHeaderComponent,
-    ServicesPageComponent
+    ServicesPageComponent,
+    HomePageComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +26,7 @@ import { environment as env } from '../environments/environment';
     AuthModule.forRoot({
       ...env.auth,
     }),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
