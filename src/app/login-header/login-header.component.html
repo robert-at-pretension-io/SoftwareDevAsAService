@@ -1,8 +1,16 @@
-<!-- The login header will either display the user icon or it will have two buttons: login button and a register button-->
-<!-- The login header will have a button labeled "Register" that will take the user to the register page. -->
+<!-- The login header will either display the user icon or it will have two buttons: login button-->
 
-    <div class="container">
-                <a class="btn btn-primary btn-xl" href="register">Register</a>
-                <a class="btn btn-primary btn-xl" href="login">Login</a>
-              
-    </div>
+
+        <div class="navbar-item">
+            <div class="buttons">
+                <a *ngIf="(auth.isAuthenticated$ | async) === false" class="button is-light" (click)="loginWithRedirect()">
+                    Login
+                </a>
+                <a *ngIf="(auth.isAuthenticated$ | async) === false" class="button is-primary" (click)="signUpWithRedirect()">
+                    Register
+                </a>
+                <a *ngIf="(auth.isAuthenticated$ | async)" class="button is-warning" (click)="logout()">
+                    Logout
+                </a>
+            </div>
+        </div>
