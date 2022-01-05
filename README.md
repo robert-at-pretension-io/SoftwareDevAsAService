@@ -38,6 +38,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 * Using OAuth access-token, call cloudflare serverless function
 
 ## App So Far
+* responsive layout: 
+
 ![Responsive](https://github.com/robert-at-pretension-io/SoftwareDevAsAService/blob/main/img/Responsive%20css%20using%20Burma%20Css.gif?raw=true)
+
+* Functioning Login/Logout: 
 
 ![Functioning Login Flow](https://github.com/robert-at-pretension-io/SoftwareDevAsAService/blob/main/img/Login%20Flow.gif?raw=true)
