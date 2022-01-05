@@ -6,6 +6,15 @@ Github actions will be used for populating the secret keys for the cloudflare se
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
+## App So Far
+* responsive layout: 
+
+![Responsive](https://github.com/robert-at-pretension-io/SoftwareDevAsAService/blob/main/img/Responsive%20css%20using%20Burma%20Css.gif?raw=true)
+
+* Functioning Login/Logout: 
+
+![Functioning Login Flow](https://github.com/robert-at-pretension-io/SoftwareDevAsAService/blob/main/img/Login%20Flow.gif?raw=true)
+
 ## Development server
 
 In order to run this locally, you will need to add the following file to your project:
@@ -37,11 +46,3 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 * Show the serverless function options on the angular service page (only if logged in)
 * Using OAuth access-token, call cloudflare serverless function
 
-## App So Far
-* responsive layout: 
-
-![Responsive](https://github.com/robert-at-pretension-io/SoftwareDevAsAService/blob/main/img/Responsive%20css%20using%20Burma%20Css.gif?raw=true)
-
-* Functioning Login/Logout: 
-
-![Functioning Login Flow](https://github.com/robert-at-pretension-io/SoftwareDevAsAService/blob/main/img/Login%20Flow.gif?raw=true)
