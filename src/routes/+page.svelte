@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+import cytoscape from 'cytoscape';
+import { onMount } from 'svelte';
+
+let cyto = cytoscape({
+  container: document.getElementById('cy'),
+  elements: [
+    { data: { id: 'a' } },
+    { data: { id: 'b' } },
+    { data: { id: 'ab', source: 'a', target: 'b' } }
+  ],
+  layout: {
+    name: 'grid',
+    rows: 1
+  }
+});
+</script>
+
+<div id='cy'></div>
