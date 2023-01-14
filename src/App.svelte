@@ -4,8 +4,10 @@
   import GraphEdge from './components/GraphEdge.svelte'
   import Sidebar from './components/Sidebar.svelte';
   import AddNodeButton from './components/sidebarComponents/AddNodeButton.svelte';
+  import NodeOrEdgeProperties from './components/sidebarComponents/NodeOrEdgeProperties.svelte';
   import {createEventDispatcher} from "svelte";
 
+  let selectedComponent = null;
 
   const nodes = [
     { id: 'N1', label: 'Start' },
@@ -33,6 +35,7 @@
 
   let sections = [
   { header: 'Add Node', component: AddNodeButton, open: true },
+  { header: 'Properties', component: NodeOrEdgeProperties, open: true}
 ];
 
 let dispatch = createEventDispatcher();
@@ -45,10 +48,23 @@ function addNode(event) {
         addedNode=event.detail;
   }
 
+  function handleNodeSelected(event) {
+  console.log('App:handleNodeSelected', event)
+  // update sidebar with the selected node information
+  selectedComponent = event.detail.node.target._private.data;
+
+  console.log(selectedComponent);
+}
+
+function handleEdgeSelected(event) {
+  console.log('App:handleEdgeSelected', event)
+  // update sidebar with the selected edge information
+}
+
 
 </script>
-<Sidebar on:addNode={addNode} sections={sections} />
-<Graph bind:addedNode={addedNode}>
+<Sidebar on:addNode={addNode} sections={sections} bind:selectedComponent={selectedComponent}/>
+<Graph bind:addedNode={addedNode} on:nodeSelected={handleNodeSelected} on:edgeSelected={handleEdgeSelected}>
   {#each nodes as node}
     <GraphNode node={node}/>
   {/each}

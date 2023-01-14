@@ -2,6 +2,7 @@
   import {createEventDispatcher} from "svelte";
 
   export let sections;
+  export let selectedComponent;
 
   const dispatch = createEventDispatcher();
 
@@ -28,7 +29,7 @@
       </div>
       {#if section.open}
         <div class="section-content">
-          <svelte:component on:addNode={addNode} this={section.component} />
+          <svelte:component on:addNode={addNode} selectedComponent={selectedComponent} this={section.component} />
         </div>
       {/if}
     </div>
@@ -38,6 +39,7 @@
 <style>
   /* styles for the sidebar */
   .sidebar {
+    box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.541);
     position: fixed; /* Make the sidebar fixed so it doesn't move with the rest of the content */
     top: 0; /* Align the top of the sidebar with the top of the screen */
     left: 0; /* Align the left side of the sidebar with the left side of the screen */

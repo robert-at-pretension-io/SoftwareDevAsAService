@@ -5,7 +5,7 @@
 
 const dispatch = createEventDispatcher();
 
-    let label;
+    let label = 'Node Label';
 
     function addNode() {
         console.log('AddNodeButton:addNode', label)

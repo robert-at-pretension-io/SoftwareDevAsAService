@@ -4,7 +4,9 @@
   import dagre from 'cytoscape-dagre'
   import GraphStyles from './GraphStyles.js'
   import { watchResize } from "svelte-watch-resize";
+  import { createEventDispatcher } from 'svelte';
 
+const dispatch = createEventDispatcher();
 
 
   setContext('graphSharedState', {
@@ -50,6 +52,16 @@
 
       console.log('node', node)
     })
+
+
+    cyInstance.on('select', 'node', (evt) => {
+      const selectedNode = evt;
+      dispatch('nodeSelected', {node: selectedNode});
+    });
+    cyInstance.on('select', 'edge', (evt) => {
+      const selectedEdge = evt;
+      dispatch('edgeSelected', {edge: selectedEdge});
+    });
   });
 
 
