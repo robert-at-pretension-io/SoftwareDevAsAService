@@ -23,7 +23,6 @@
   {/each}
 </div>
 
-
 <style>
   /* styles for the sidebar */
   .sidebar {
