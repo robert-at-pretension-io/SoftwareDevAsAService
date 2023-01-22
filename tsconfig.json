@@ -1,6 +1,22 @@
 {
-    "extends": "@tsconfig/svelte/tsconfig.json",
-
-    "include": ["src/**/*", "src/node_modules", "**/*.ts"],
-    "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
+    "compilerOptions": {
+      "allowJs": true,
+      "baseUrl": "./src",
+      "outDir": "./dist",
+      "target": "es6",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "strict": true,
+      "esModuleInterop": true,
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "typeRoots": [
+        "./node_modules/@types/"
+      ],
+    },
+    "include": [
+      "src/**/*"
+    ]
   }

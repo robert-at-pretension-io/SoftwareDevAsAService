@@ -1,15 +1,25 @@
-<script>
+<script lang="ts">
     import { onMount, getContext } from 'svelte'
     
     import { createEventDispatcher } from 'svelte';
+    import type { Graph, Node, Edge, selectedGraphComponent, GraphState } from '../../system_types';
 
-const dispatch = createEventDispatcher();
+    import { getUniqueId, addNode } from '../../helper_functions/graph';
+
 
     let label = 'Node Label';
 
-    function addNode() {
-        console.log('AddNodeButton:addNode', label)
-        dispatch('addNode', { 'label': label });
+    async function localAddNode() {
+        let id = await getUniqueId();
+
+        let newNode: Node = {
+            id: id,
+            label: label,
+            data: {}
+        }
+
+        await addNode(newNode);
+
   }
 
 </script>
@@ -17,7 +27,7 @@ const dispatch = createEventDispatcher();
 
 <div id="cy" />
 <input type="text" bind:value={label} placeholder="Enter label for new node" />
-<button on:click={addNode}>Add Node</button>
+<button on:click={localAddNode}>Add Node</button>
 
 <style>
     input {

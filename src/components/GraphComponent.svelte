@@ -1,30 +1,49 @@
 <script lang="ts">
   import { onMount, setContext } from "svelte";
-  import cytoscape from "cytoscape";
+  import cytoscape, { Core } from "cytoscape";
   import dagre from "cytoscape-dagre";
   import GraphStyles from "./GraphStyles.js";
   // import { Node, Edge, Graph } from '../system_types/graph';
-  import { writable } from 'svelte/store';
-  import { graphStore } from '../stores/graphStore';
-  import { addEdge, addNode, setGraphState, getGraphState, edges, nodes } from '../helper_functions/graph';
-
-  
+  import { graphStore } from "../stores/graphStore";
+  import {
+    edges,
+    nodes,
+    resetLastAction,
+    selectNode,
+    selectEdge
+  } from "../helper_functions/graph";
 
   setContext("graphSharedState", {
     getCyInstance: () => cyInstance,
   });
 
-  let refElement = null;
-  let cyInstance = null;
+  let refElement : HTMLElement | null = null;
+  let cyInstance : Core | null = null;
 
+  graphStore.subscribe((value) => {
+    console.log("graphStore.subscribe", value);
+    console.log("last action was", value.lastAction);
+    console.log("acted on", value.actedOn);
+    if (cyInstance && value.lastAction === "addNode" && value.actedOn != null) {
+      cyInstance.add({
+        group: "nodes",
+        data: { ...value.actedOn },
+      });
+      resetLastAction();
+    } else if (cyInstance && value.lastAction === "addEdge"&& value.actedOn != null) {
+      cyInstance.add({
+        group: "edges",
+        data: { ...value.actedOn },
+      });
+      resetLastAction();
+    }
+  });
 
   onMount(async () => {
-
     nodes().then((nodes) => {
       nodes.forEach((node) => {
-        cyInstance.add({
+        cyInstance?.add({
           group: "nodes",
-          id: node.id,
           data: { ...node },
         });
       });
@@ -32,15 +51,12 @@
 
     edges().then((edges) => {
       edges.forEach((edge) => {
-        cyInstance.add({
+        cyInstance?.add({
           group: "edges",
-          id: edge.id,
           data: { ...edge },
         });
       });
     });
-
-
 
     cytoscape.use(dagre);
 
@@ -50,40 +66,20 @@
     });
 
     cyInstance.on("add", () => {
-      cyInstance
-        .makeLayout({
+      if (cyInstance) {
+        cyInstance.layout({
           name: "dagre",
-          rankDir: "TB",
-          nodeSep: 150,
-        })
-        .run();
-    });
-
+        }).run();
+      }});
 
     cyInstance.on("select", "node", (evt) => {
-      const selectedNode = evt;
-      // dispatch("nodeSelected", { node: selectedNode });
+      const selectedNode = evt.target.data();
+      selectNode(selectedNode.id);
     });
 
-
     cyInstance.on("select", "edge", (event) => {
-
-      
-      let selectedEdge = event.target;
-      let sourceId = selectedEdge.data("source");
-      let targetId = selectedEdge.data("target");
-
-      const nodes = cyInstance.nodes();
-
-      let sources = nodes
-        .filter((node) => node.id() !== targetId)
-        .map((node) => node.id());
-
-      let targets = nodes
-        .filter((node) => node.id() !== sourceId)
-        .map((node) => node.id());
-
-      console.log("selectedEdge", selectedEdge);
+      console.log("selectedEdge", event.target.data());
+      selectEdge(event.target.data().source, event.target.data().target);
     });
   });
 </script>

@@ -1,15 +1,11 @@
 <script lang="ts">
-  import GraphComponent from './components/GraphComponent.svelte'
-  import GraphNode from './components/GraphNode.svelte'
-  import GraphEdge from './components/GraphEdge.svelte'
+  import GraphComponent from './components/GraphComponent.svelte';
   import Sidebar from './components/Sidebar.svelte';
+  import ModifyNodesOrEdges from './components/sidebarComponents/ModifyNodesOrEdges.svelte';
   import AddNodeButton from './components/sidebarComponents/AddNodeButton.svelte';
   import NodeOrEdgeProperties from './components/sidebarComponents/NodeOrEdgeProperties.svelte';
-  import {createEventDispatcher} from "svelte";
-  import type {Graph, Node, Edge, selectedGraphComponent, GraphState} from './system_types/graph.d';
-  import {writable} from 'svelte/store';
-  import {graphStore} from './stores/graphStore';
-  import {addEdge, addNode, setGraphState} from './helper_functions/graph';
+  import type {Graph,  selectedGraphComponent, GraphState} from './system_types';
+  import {setGraphState} from './helper_functions/graph';
   
   const graph: Graph = {
     nodes: [
@@ -46,25 +42,28 @@
   };
 
 const selectedComponent: selectedGraphComponent = {
-  selected: graph.nodes[0],
+  type: 'Node',
+  instance: graph.nodes[0],
   neighbors: graph.nodes,
-  outgoing: graph.edges.filter(edge => edge.id === graph.nodes[0].id),
-  incoming: graph.edges.filter(edge => edge.id === graph.nodes[0].id)
+  outgoing: graph.edges.filter(edge => edge.source === graph.nodes[0].id),
+  incoming: graph.edges.filter(edge => edge.target === graph.nodes[0].id)
 }
 
 let graphState: GraphState =
 {
   graph: graph,
-  selected: selectedComponent
+  selected: selectedComponent,
+  lastAction: 'none',
+  actedOn: null
 }
 
 setGraphState(graphState);
 
   let sections = [
   { header: 'Add Node', component: AddNodeButton, open: true },
-  { header: 'Properties', component: NodeOrEdgeProperties, open: true}
+  { header: 'Properties', component: NodeOrEdgeProperties, open: true},
+  { header: 'Modify Nodes or Edges', component: ModifyNodesOrEdges, open: true },
 ];
-
 
 </script>
 <Sidebar sections={sections}   />

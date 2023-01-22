@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import terser from '@rollup/plugin-terser';
 import autoPreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import eslint from '@rollup/plugin-eslint';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -37,6 +38,8 @@ export default {
     // https://github.com/rollup/rollup-plugin-commonjs
     resolve(),
     commonjs(),
+    eslint({
+      fix: true,}),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production

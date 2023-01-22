@@ -2,7 +2,6 @@
 
   export let sections;
 
-
 </script>
 
 <div class="sidebar">
@@ -54,8 +53,5 @@
     padding: 10px;
     background-color: #fff;
   }
-
-
-
 
 </style>
