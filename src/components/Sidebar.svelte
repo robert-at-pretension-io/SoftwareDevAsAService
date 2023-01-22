@@ -1,7 +1,15 @@
 <script>
+  import AddNodeButton from "./sidebarComponents/AddNodeButton.svelte";
+  import ModifyNodesOrEdges from "./sidebarComponents/ModifyNodesOrEdges.svelte";
 
-  export let sections;
-
+  let sections = [
+    { header: "Add Node", component: AddNodeButton, open: true },
+    {
+      header: "Modify Nodes or Edges",
+      component: ModifyNodesOrEdges,
+      open: true,
+    },
+  ];
 </script>
 
 <div class="sidebar">
@@ -9,7 +17,12 @@
     <div class="section">
       <div
         class="section-header"
-        on:click={() => section.open = !section.open}
+        on:keydown={(event) => {
+          if (event.key === "Enter") {
+            section.open = !section.open;
+          }
+        }}
+        on:click={() => (section.open = !section.open)}
       >
         {section.header}
       </div>
@@ -30,8 +43,7 @@
     top: 0; /* Align the top of the sidebar with the top of the screen */
     left: 0; /* Align the left side of the sidebar with the left side of the screen */
     bottom: 0; /* Make the sidebar as tall as the screen */
-
-    width: 200px;
+    width: 300px;
     background-color: #f3f3f3; /* Add a background color */
     overflow-y: auto; /* Add scrollbar if the content is too tall */
   }
@@ -53,5 +65,4 @@
     padding: 10px;
     background-color: #fff;
   }
-
 </style>

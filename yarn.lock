@@ -2372,6 +2372,11 @@ svelte-preprocess@^5.0.0, svelte-preprocess@^5.0.1:
     sorcery "^0.11.0"
     strip-indent "^3.0.0"
 
+svelte-split-pane@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/svelte-split-pane/-/svelte-split-pane-0.1.2.tgz#aae94c583fdcf80e3ceaefc31755f3c49886e6a8"
+  integrity sha512-JluEydC9v2DetyhlwCF3CdqAkET8XPHP7WeWbl4lVLOg55avDOhoS5U6BRhvWd104HOqhUcCSz+7Nveyjmzjeg==
+
 svelte-watch-resize@^1.0.3:
   version "1.0.3"
   resolved "https://registry.npmjs.org/svelte-watch-resize/-/svelte-watch-resize-1.0.3.tgz"

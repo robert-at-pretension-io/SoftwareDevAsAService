@@ -30,6 +30,6 @@ export type selectedGraphComponent = {
 export type GraphState = {
   graph: Graph;
   selected: selectedGraphComponent | null;
-  lastAction: "addNode" | "addEdge" | "removeNode" | "removeEdge" | "selectNode" | "deselectNode" | "none" | "selectEdge" | "deselectEdge";
+  lastAction: "addNode" | "addEdge" | "removeNode" | "removeEdge" | "selectNode" | "deselectNode" | "none" | "selectEdge" | "deselectEdge" | "updateNode" | "updateEdge";
   actedOn: Node | Edge | null;
 };
