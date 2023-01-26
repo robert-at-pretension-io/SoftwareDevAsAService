@@ -1,6 +1,7 @@
 <script>
   import AddNodeButton from "./sidebarComponents/AddNodeButton.svelte";
   import ModifyNodesOrEdges from "./sidebarComponents/ModifyNodesOrEdges.svelte";
+  import DeleteEdge from "./sidebarComponents/DeleteEdge.svelte";
 
   let sections = [
     { header: "Add Node", component: AddNodeButton, open: true },
@@ -9,6 +10,7 @@
       component: ModifyNodesOrEdges,
       open: true,
     },
+    { header: "Delete Edge", component: DeleteEdge, open: true },
   ];
 </script>
 

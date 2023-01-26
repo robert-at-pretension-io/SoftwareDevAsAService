@@ -1,7 +1,9 @@
 <script lang="ts">
   import { onMount, setContext } from "svelte";
   import {
+    addEdge,
     getGraphState,
+    getUniqueId,
     resetLastAction,
     updateEdge,
     updateNode,
@@ -12,6 +14,7 @@
 
   let label = "";
   let data = "";
+  let target = "";
 
   let graphState: GraphState = {
     selected: null,
@@ -84,6 +87,28 @@
         on:click={() =>
           updateNode(graphState.selected.instance.id, label, data)}
         >Update Node</button
+      >
+    {/if}
+  {/if}
+</div>
+
+<div>
+  {#if graphState.selected != null}
+    {#if graphState.selected.type === "Node" && graphState.selected != null && graphState.selected.neighbors && graphState.selected.neighbors.length > 0}
+      <h3>Add Edge</h3>
+      <label for="target">Target Node:</label>
+      <select id="target" bind:value={target}>
+        {#each graphState.selected.neighbors as node}
+          <option value={node.id}>{node.id}</option>
+        {/each}
+      </select>
+      <button
+        on:click={async () =>
+          addEdge({
+            id: await getUniqueId(),
+            source: graphState.selected.instance.id,
+            target,
+          })}>Add Edge</button
       >
     {/if}
   {/if}

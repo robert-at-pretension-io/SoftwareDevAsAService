@@ -67,6 +67,13 @@ within the graph.
         label: value.actedOn.label,
       });
       cyInstance.$("#" + value.actedOn.id).data(value.actedOn.data);
+    } else if (
+      cyInstance &&
+      value.lastAction === "removeEdge" &&
+      value.actedOn != null
+    ) {
+      cyInstance.$("#" + value.actedOn.id).remove();
+      resetLastAction();
     }
   });
 
