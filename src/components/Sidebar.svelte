@@ -4,13 +4,14 @@
   import DeleteEdge from "./sidebarComponents/DeleteEdge.svelte";
 
   let sections = [
-    { header: "Add Node", component: AddNodeButton, open: true },
+    { header: "Add Node", component: AddNodeButton, open: false },
     {
       header: "Modify Nodes or Edges",
       component: ModifyNodesOrEdges,
-      open: true,
+      open: false,
     },
-    { header: "Delete Edge", component: DeleteEdge, open: true },
+    { header: "Delete Edge", component: DeleteEdge, open: false },
+    { header: "View Available Actions"}
   ];
 </script>
 

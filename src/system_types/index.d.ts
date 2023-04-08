@@ -33,3 +33,30 @@ export type GraphState = {
   lastAction: "addNode" | "addEdge" | "removeNode" | "removeEdge" | "selectNode" | "deselectNode" | "none" | "selectEdge" | "deselectEdge" | "updateNode" | "updateEdge";
   actedOn: Node | Edge | null;
 };
+
+export type Action = {
+  prompt: String,
+  name: String,
+  system: String
+}
+
+export type Process = {
+  name: String,
+  trigger: String,
+  triggers_next_process: String,
+  waits_for_branch_completion: boolean,
+  description: String,
+  creates_process_branch: boolean,
+  branch_step: String
+}
+
+export type Message = {
+  role: String,
+  content: String
+}
+
+export type AiSystemState = {
+  actions: Action[],
+  processes: Process[],
+  messages: Message[]
+}
